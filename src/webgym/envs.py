@@ -203,7 +203,7 @@ class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
 
 
 class MiniWoBClickButtonVisualEnv(MiniWoBVisualClickEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("click-button", num_instances, obs_im_width, obs_im_height)
 
 
@@ -212,30 +212,30 @@ class MiniWoBEmailInboxImportantVisualEnv(MiniWoBVisualClickEnv):
     E.g.: Find emails from specific person and mark them as important
     """
 
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("email-inbox-important", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBSocialMediaMuteUserVisualEnv(MiniWoBVisualClickEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("social-media", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBSocialMediaReplyVisualEnv(MiniWoBVisualClickEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("social-media-some", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBBookFlightVisualEnv(MiniWoBVisualClickAndTypeEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("book-flight", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBLoginUserVisualEnv(MiniWoBVisualClickAndTypeEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("login-user", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBAddProductCartOptionsVisualEnv(MiniWoBVisualClickEnv):
-    def __init__(self, num_instances=1):
+    def __init__(self, num_instances=1, obs_im_width=64, obs_im_height=64):
         super().__init__("add-product-with-options", num_instances, obs_im_width, obs_im_height)
