@@ -13,6 +13,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 
 from miniwob.fields import Fields, get_field_extractor
 from miniwob.state import MiniWoBState
@@ -158,23 +159,15 @@ class MiniWoBInstance(Thread):
         assert not hasattr(self, "driver"), "Instance {} already has a driver".format(
             self.index
         )
-        print(f"DEBUG:URL:{self.url}")
-        options = webdriver.ChromeOptions()
+        options = Options()
         if self.headless:
-            options.add_argument("headless")
-            options.add_argument("disable-gpu")
-            options.add_argument("no-sandbox")
-        else:
-            options.add_argument("app=" + self.url)
-            options.add_argument(
-                "window-size={},{}".format(self.window_width, self.window_height)
-            )
-            options.add_argument(
-                "window-position={},{}".format(
-                    9000, 30 + self.index * (self.window_height + 30)
-                )
-            )
-        self.driver = webdriver.Chrome(chrome_options=options)
+            options.headless = True
+
+        profile = webdriver.FirefoxProfile()
+
+        self.driver = webdriver.Firefox(firefox_profile=profile,
+                                        options=options,
+                                        executable_path='/usr/bin/geckodriver')
         self.driver.implicitly_wait(5)
         if self.headless:
             self.driver.get(self.url)
