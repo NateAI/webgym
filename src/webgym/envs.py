@@ -11,7 +11,7 @@ from miniwob.action import MiniWoBCoordClick, MiniWoBType
 
 
 class MiniWoBVisualClickEnv(MiniWoBEnv):
-    def __init__(self, name, num_instances=1):
+    def __init__(self, name, num_instances=1, obs_im_width=64, obs_im_height=64):
         """RL environment with visual observations and touch/mouse-click action space
             Two dimensional, continuous-valued action space allows agents
             to specify (x, y) coordinates on the visual rendering to click/touch
@@ -25,8 +25,8 @@ class MiniWoBVisualClickEnv(MiniWoBEnv):
         self.miniwob_env_name = name
         self.task_width = 400
         self.task_height = 350
-        self.obs_im_width = 256
-        self.obs_im_height = 256
+        self.obs_im_width = obs_im_width
+        self.obs_im_height = obs_im_height
         self.num_channels = 3  # RGB
         self.obs_im_size = (self.obs_im_width, self.obs_im_height)
         super().__init__(self.miniwob_env_name, self.obs_im_size, num_instances)
@@ -98,7 +98,7 @@ class MiniWoBVisualClickEnv(MiniWoBEnv):
 
 
 class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
-    def __init__(self, name, num_instances=1):
+    def __init__(self, name, num_instances=1, obs_im_width=64, obs_im_height=64):
         """RL environment with visual observations and click & type actions
         Three dimensional, continuous-valued action space allows agents
         to specify (x, y) coordinates on the visual rendering to click
@@ -111,8 +111,8 @@ class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
         self.miniwob_env_name = name
         self.task_width = 400
         self.task_height = 350
-        self.obs_im_width = 256
-        self.obs_im_height = 256
+        self.obs_im_width = obs_im_width
+        self.obs_im_height = obs_im_height
         self.num_channels = 3  # RGB
         self.obs_im_size = (self.obs_im_width, self.obs_im_height)
         super().__init__(self.miniwob_env_name, self.obs_im_size, num_instances)
@@ -204,7 +204,7 @@ class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
 
 class MiniWoBClickButtonVisualEnv(MiniWoBVisualClickEnv):
     def __init__(self, num_instances=1):
-        super().__init__("click-button", num_instances)
+        super().__init__("click-button", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBEmailInboxImportantVisualEnv(MiniWoBVisualClickEnv):
@@ -213,29 +213,29 @@ class MiniWoBEmailInboxImportantVisualEnv(MiniWoBVisualClickEnv):
     """
 
     def __init__(self, num_instances=1):
-        super().__init__("email-inbox-important", num_instances)
+        super().__init__("email-inbox-important", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBSocialMediaMuteUserVisualEnv(MiniWoBVisualClickEnv):
     def __init__(self, num_instances=1):
-        super().__init__("social-media", num_instances)
+        super().__init__("social-media", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBSocialMediaReplyVisualEnv(MiniWoBVisualClickEnv):
     def __init__(self, num_instances=1):
-        super().__init__("social-media-some", num_instances)
+        super().__init__("social-media-some", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBBookFlightVisualEnv(MiniWoBVisualClickAndTypeEnv):
     def __init__(self, num_instances=1):
-        super().__init__("book-flight", num_instances)
+        super().__init__("book-flight", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBLoginUserVisualEnv(MiniWoBVisualClickAndTypeEnv):
     def __init__(self, num_instances=1):
-        super().__init__("login-user", num_instances)
+        super().__init__("login-user", num_instances, obs_im_width, obs_im_height)
 
 
 class MiniWoBAddProductCartOptionsVisualEnv(MiniWoBVisualClickEnv):
     def __init__(self, num_instances=1):
-        super().__init__("add-product-with-options", num_instances)
+        super().__init__("add-product-with-options", num_instances, obs_im_width, obs_im_height)
