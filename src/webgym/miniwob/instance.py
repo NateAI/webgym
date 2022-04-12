@@ -29,10 +29,10 @@ class MiniWoBInstance(Thread):
     DEFAULT_BASE_URL = "http://localhost:8000/"
 
     # Added some space for title bar
-    WINDOW_WIDTH = 700
-    WINDOW_HEIGHT = 700
-    TASK_WIDTH = 400
-    TASK_HEIGHT = 350
+    WINDOW_WIDTH = 500
+    WINDOW_HEIGHT = 240
+    TASK_WIDTH = 320
+    TASK_HEIGHT = 320
 
     FLIGHT_WINDOW_WIDTH = 600
     FLIGHT_WINDOW_HEIGHT = 700
