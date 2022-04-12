@@ -369,7 +369,9 @@ class MiniWoBInstance(Thread):
         Args:
             seed (object)
         """
-        self.driver.execute_script("Math.seedrandom({});".format(repr(seed)))
+        pass
+        # TODO: seed
+        # self.driver.execute_script("Math.seedrandom({});".format(repr(seed)))
 
     def set_mode(self, mode):
         """Set the task generation mode (e.g., "train" or "test") to a new value.
