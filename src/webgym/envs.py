@@ -11,7 +11,7 @@ from miniwob.action import MiniWoBCoordClick, MiniWoBType
 
 
 class MiniWoBVisualClickEnv(MiniWoBEnv):
-    def __init__(self, name, num_instances=1, task_width=160, task_height=210, obs_im_width=64, obs_im_height=64):
+    def __init__(self, name, num_instances=1):
         """RL environment with visual observations and touch/mouse-click action space
             Two dimensional, continuous-valued action space allows agents
             to specify (x, y) coordinates on the visual rendering to click/touch
@@ -23,10 +23,10 @@ class MiniWoBVisualClickEnv(MiniWoBEnv):
             num_instances (int, optional): Number of parallel env instances. Defaults to 1.
         """
         self.miniwob_env_name = name
-        self.task_width = task_width
-        self.task_height = task_height
-        self.obs_im_width = obs_im_width
-        self.obs_im_height = obs_im_height
+        self.task_width = 350
+        self.task_height = 400
+        self.obs_im_width = 256
+        self.obs_im_height = 256
         self.num_channels = 3  # RGB
         self.obs_im_size = (self.obs_im_width, self.obs_im_height)
         super().__init__(self.miniwob_env_name, self.obs_im_size, num_instances)
@@ -109,10 +109,10 @@ class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
             num_instances (int, optional): Number of parallel env instances. Defaults to 1.
         """
         self.miniwob_env_name = name
-        self.task_width = 160
-        self.task_height = 210
-        self.obs_im_width = 64
-        self.obs_im_height = 64
+        self.task_width = 350
+        self.task_height = 400
+        self.obs_im_width = 256
+        self.obs_im_height = 256
         self.num_channels = 3  # RGB
         self.obs_im_size = (self.obs_im_width, self.obs_im_height)
         super().__init__(self.miniwob_env_name, self.obs_im_size, num_instances)
@@ -238,4 +238,4 @@ class MiniWoBLoginUserVisualEnv(MiniWoBVisualClickAndTypeEnv):
 
 class MiniWoBAddProductCartOptionsVisualEnv(MiniWoBVisualClickEnv):
     def __init__(self, num_instances=1):
-        super().__init__("add-product-with-options", num_instances,  task_width=350, task_height=400, obs_im_width=256, obs_im_height=256)
+        super().__init__("add-product-with-options", num_instances)
