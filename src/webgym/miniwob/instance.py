@@ -159,15 +159,12 @@ class MiniWoBInstance(Thread):
         assert not hasattr(self, "driver"), "Instance {} already has a driver".format(
             self.index
         )
+
         options = Options()
         if self.headless:
             options.headless = True
 
-        profile = webdriver.FirefoxProfile()
-
-        self.driver = webdriver.Firefox(firefox_profile=profile,
-                                        options=options,
-                                        executable_path='/usr/bin/geckodriver')
+        self.driver = webdriver.Firefox(options=options)
         self.driver.implicitly_wait(5)
         if self.headless:
             self.driver.get(self.url)
