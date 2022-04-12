@@ -31,8 +31,8 @@ class MiniWoBInstance(Thread):
     # Added some space for title bar
     WINDOW_WIDTH = 700
     WINDOW_HEIGHT = 700
-    TASK_WIDTH = 350
-    TASK_HEIGHT = 400
+    TASK_WIDTH = 400
+    TASK_HEIGHT = 350
 
     FLIGHT_WINDOW_WIDTH = 600
     FLIGHT_WINDOW_HEIGHT = 700

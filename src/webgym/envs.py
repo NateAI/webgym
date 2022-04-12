@@ -23,8 +23,8 @@ class MiniWoBVisualClickEnv(MiniWoBEnv):
             num_instances (int, optional): Number of parallel env instances. Defaults to 1.
         """
         self.miniwob_env_name = name
-        self.task_width = 350
-        self.task_height = 400
+        self.task_width = 400
+        self.task_height = 350
         self.obs_im_width = 256
         self.obs_im_height = 256
         self.num_channels = 3  # RGB
@@ -109,8 +109,8 @@ class MiniWoBVisualClickAndTypeEnv(MiniWoBEnv):
             num_instances (int, optional): Number of parallel env instances. Defaults to 1.
         """
         self.miniwob_env_name = name
-        self.task_width = 350
-        self.task_height = 400
+        self.task_width = 400
+        self.task_height = 350
         self.obs_im_width = 256
         self.obs_im_height = 256
         self.num_channels = 3  # RGB
