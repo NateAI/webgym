@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Product to Cart Task</title>
+
+<!-- stylesheets -->
+<link rel="stylesheet" type="text/css" href="../core/core.css">
+<style>
+.bold { font-weight: bold; }
+input { margin: 5px; width: 200px; }
+</style>
+
+<!-- JS -->
+<script src="../core/core.js"></script>
+<script src="../core/d3.v3.min.js"></script>
+<script src="../common/ui_utils.js"></script>
+
+<script>
+  var EXPECTED_SEQUENCE = ['add-to-cart'];
+  var buttonsPushed = [];
+
+
+var buttonClicked = function () {
+  var id = this.getAttribute('id');
+  buttonsPushed.push(id);
+  console.log('button pushed:' + id);
+  console.log('expected buttons:' + EXPECTED_SEQUENCE);
+  if (buttonsPushed.length == 3) {
+    console.log('buttons pushed so far:' + buttonsPushed);
+    var correctOptionsPushed = buttonsPushed.every(function (v, i) {
+      return v == EXPECTED_SEQUENCE[i];
+    });
+    var r = correctOptionsPushed ? 1.0 : -1.0;
+    core.endEpisode(r, r > 0);
+  }
+}
+
+
+var genProblem = function() {
+  buttonsPushed = [];
+
+  // generate color and size
+  var color = core.sample(ui_utils.PRODUCT_COLORS).toLowerCase();
+  var size = core.sample(ui_utils.PRODUCT_SIZES).toUpperCase();
+
+  EXPECTED_SEQUENCE = [color, size.toLowerCase(), 'add-to-cart']
+  //EXPECTED_SEQUENCE = ['add-to-cart']
+  d3.select('#query').html('Select the product with <span class="bold">color: </span> "' + color + '" and <span class="bold">size: </span> "' + size + '" and add it to cart.');
+
+  // Track if the expected elements are clicked
+  var el = d3.select('#'+color);
+  el.on('click', buttonClicked);
+
+  var el = d3.select('#'+size.toLowerCase());
+  el.on('click', buttonClicked);
+
+  var el = d3.select('#add-to-cart');
+  el.on('click', buttonClicked);
+}
+
+window.onload = function() {
+  core.startEpisode();
+}
+</script>
+</head>
+<body>
+<div id="wrap">
+  <div id="query"></div>
+  <div style="width: 480px; height: 350px; display: table;">
+  <div id="area" style="display: table-row; ">
+      <div style="width: 180px; display: table-cell; float: left;">
+       <img width="180" height="270" srcset="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=1314 1314w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=1080 1080w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=960 960w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=720 720w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=640 640w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=540 540w, https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=360 360w" sizes="(min-width: 768px) 40vw, calc(100vw - 40px)" src="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_b?$xlarge$&amp;fit=constrain&amp;qlt=80&amp;wid=640" alt="" class="o-pwa-image__img c-pwa-image-viewer__img js-pwa-faceout-image">     </div>
+
+    <div id="form" style="display: table-cell; float: right;">
+        <h2> Some T-Shirt</h2>
+          <h3>Select Color: </h3>
+      <div class="product-colors-palette">
+        <img
+                src="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_021_s?fit=constrain&amp;hei=20&amp;qlt=75"
+                id="red"
+                class="o-pwa-color-swatch o-pwa-color-swatch--large">
+        <img
+                src="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_040_s?fit=constrain&amp;hei=20&amp;qlt=75"
+                id="blue"
+                class="o-pwa-color-swatch o-pwa-color-swatch--large">
+        <img
+                src="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_010_s?fit=constrain&amp;hei=20&amp;qlt=75"
+                id="white"
+                class="o-pwa-color-swatch o-pwa-color-swatch--large">
+        <img
+                src="https://imageseu.urbndata.com/is/image/UrbanOutfittersEU/0112449709919_036_s?fit=constrain&amp;hei=20&amp;qlt=75"
+                id="khaki"
+                class="o-pwa-color-swatch o-pwa-color-swatch--large">
+      </div>
+      <h3>Select Size: </h3>
+      <div class="product-sizes-palette" style="width: 250px;">
+        <button id="xs" style="width: 50px;">XS</button>
+        <button id="s" style="width: 50px;">S</button>
+        <button id="m" style="width: 50px;">M</button>
+        <br>
+        <button id="l" style="width: 50px;">L</button>
+        <button id="xl" style="width: 50px;">XL</button>
+      </div>
+      <br>
+      <br>
+      <button id="add-to-cart" style="background-color: rgba(43,154,208,0.95); font-size: 16px;">Add to Cart</button>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

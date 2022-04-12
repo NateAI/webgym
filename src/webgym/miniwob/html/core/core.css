@@ -7,9 +7,9 @@ body {
 }
 
 #wrap {
-  height:210px;
+  height:350px;
   background-color: white;
-  width:160px;
+  width:400px;
 }
 
 #query {
@@ -39,9 +39,9 @@ body {
 #reward-display {
   font-size: 14px;
   height: 210px;
-  width: 160px;
+  width: 350px;
   position: absolute;
-  left: 165px;
+  left: 400px;
   top: 0px;
 }
 
@@ -67,8 +67,8 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  width: 160px;
-  height: 210px;
+  width: 400px;
+  height: 350px;
   background-color: #111;
   color: #eee;
   text-align: center;
@@ -86,7 +86,7 @@ body {
 /* canvas for tracking clicks */
 #click-canvas {
   position: absolute;
-  left: 165px;
+  left: 400px;
   top: 0px;
   background-color: white;
 }

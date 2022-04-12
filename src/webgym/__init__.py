@@ -36,6 +36,10 @@ _AVAILABLE_ENVS = {
         "entry_point": "webgym.envs:MiniWoBLoginUserVisualEnv",
         "discription": "Login user",
     },
+    "MiniWoBAddProductCartOptionsVisualEnv-v0": {
+        "entry_point": "webgym.envs:MiniWoBAddProductCartOptionsVisualEnv",
+        "discription": "Click the button on a web page",
+    },
 }
 
 
