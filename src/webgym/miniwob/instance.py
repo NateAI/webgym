@@ -179,7 +179,7 @@ class MiniWoBInstance(Thread):
             logging.error("Page did not load properly. Wrong MINIWOB_BASE_URL?")
             raise e
         # Seed the seed
-        self.driver.execute_script("Math.seedrandom({});".format(self.init_seed))
+        # self.driver.execute_script("Math.seedrandom({});".format(self.init_seed))
 
     def close(self):
         """Tear down the WebDriver."""
