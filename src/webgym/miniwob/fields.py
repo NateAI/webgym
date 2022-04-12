@@ -1096,6 +1096,13 @@ _add(
     [],
 )
 
+# 'Select the product with color: "white" and size: "S" and add it to cart.'
+_add(
+    "add-product-with-options",
+    r'Select the product with color: "(.*)" and size: (.*) and add it to (cart)\.',
+    ["color", "size", "cart"],
+)
+
 
 def extract_flight_subtasks(utterance):
     fields = json.loads(utterance)
