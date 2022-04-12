@@ -52,10 +52,7 @@ class MiniWoBEnv(MiniWoBEnvironment, gym.Env):
         """
         miniwob_state = super().reset(seeds, mode, record_screenshots=True)
 
-        return [
-            state.screenshot.resize(self.obs_im_shape, Image.ANTIALIAS)
-            for state in miniwob_state
-        ]
+        return miniwob_state
 
     def step(self, actions):
         """Applies an action on each instance and returns the results.
@@ -73,12 +70,8 @@ class MiniWoBEnv(MiniWoBEnvironment, gym.Env):
                     Local information for instance i is in info['n'][i]
         """
         states, rewards, dones, info = super().step(actions)
-        # Obtain screenshot & Resize image obs to match config
-        img_states = [
-            state.screenshot.resize(self.obs_im_shape) if not dones[i] else None
-            for i, state in enumerate(states)
-        ]
-        return img_states, rewards, dones, info
+
+        return states, rewards, dones, info
 
 
 if __name__ == "__main__":
